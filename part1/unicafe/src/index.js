@@ -1,4 +1,3 @@
-import userEvent from '@testing-library/user-event'
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
@@ -14,12 +13,14 @@ const Statistics = ({ good, neutral, bad, total }) => {
   return (
     <div>
       <table>
-        <StatisticsLine text="good" value={good} />
-        <StatisticsLine text="neutral" value={neutral} />
-        <StatisticsLine text="bad" value={bad} />
-        <StatisticsLine text="total" value={total} />
-        <StatisticsLine text="average" value={(good - bad) / total} />
-        <StatisticsLine text="positive" value={good / total * 100} char={"%"}/>
+        <tbody>
+          <StatisticsLine text="good" value={good} />
+          <StatisticsLine text="neutral" value={neutral} />
+          <StatisticsLine text="bad" value={bad} />
+          <StatisticsLine text="total" value={total} />
+          <StatisticsLine text="average" value={(good - bad) / total} />
+          <StatisticsLine text="positive" value={good / total * 100} char={"%"}/>
+        </tbody>
       </table>
     </div>
   )

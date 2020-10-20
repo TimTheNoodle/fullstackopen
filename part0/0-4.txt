@@ -1,0 +1,31 @@
+Copy-paste this to https://www.websequencediagrams.com/ to view create the diagram.
+
+participant käyttäjä
+participant selain
+participant palvelin
+
+note right of käyttäjä: käyttäjä kirjottaa uuden muistiinpanon ja painaa "Save"
+käyttäjä->selain: 
+selain->palvelin: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+palvelin-->selain: status 302 (Found), uudelleenohjauspyyntö
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+palvelin-->selain: status 304 (Not modified), sivun HTML-koodi
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+palvelin-->selain: status 304, main.css
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+palvelin-->selain: status 304, main.js
+
+note over selain:
+selain alkaa suorittaa js-koodia
+joka pyytää JSON-datan palvelimelta
+end note
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+palvelin-->selain: status 200 (OK), data.json eli kaikki muistiinpanot
+
+note over selain:
+selain suorittaa tapahtumankäsittelijän
+joka renderöi muistiinpanot näytölle
+end note
+note right of käyttäjä: kaikki muistiinpanot näytöllä, mukaan lukien juuri lisätty
+selain-->käyttäjä:

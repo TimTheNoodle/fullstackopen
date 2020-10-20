@@ -1,0 +1,16 @@
+Copy-paste this to https://www.websequencediagrams.com/ to view create the diagram.
+
+participant käyttäjä
+participant selain
+participant palvelin
+
+note right of käyttäjä: sivun lataaminen kuvattu 0-5 osassa
+note right of käyttäjä: käyttäjä lisää uuden muistiinpanon ja painaa "Save" osoitteessa https://studies.cs.helsinki.fi/exampleapp/spa
+käyttäjä->selain: 
+selain->palvelin: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+palvelin-->selain: status 201 (Created), uusi muistiinpano on luotu
+
+end note
+note over selain: muistiinpanolista päivittyy mutta selain ei päivity uudestaan SPA-versiossa.
+note right of käyttäjä: kaikki muistiinpanot näkyvät näytöllä
+selain-->käyttäjä:

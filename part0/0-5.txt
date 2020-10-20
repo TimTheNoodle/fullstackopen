@@ -1,0 +1,29 @@
+Copy-paste this to https://www.websequencediagrams.com/ to view create the diagram.
+
+participant käyttäjä
+participant selain
+participant palvelin
+
+note right of käyttäjä: käyttäjä selaa osoitteeseen https://studies.cs.helsinki.fi/exampleapp/spa
+käyttäjä->selain: 
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa
+palvelin-->selain: status 304, sivun HTML-tiedosto
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+palvelin-->selain: status 304 (Not modified), single page versio JavaScriptistä
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+palvelin-->selain: status 304, main.css
+
+note over selain:
+selain alkaa suorittaa js-koodia
+joka pyytää JSON-datan palvelimelta
+end note
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/data.json
+palvelin-->selain: status 304, data.json eli kaikki muistiinpanot
+
+note over selain:
+selain suorittaa tapahtumankäsittelijän
+joka renderöi muistiinpanot näytölle
+end note
+note right of käyttäjä: muistiinpanot näkyvät näytöllä
+selain-->käyttäjä:

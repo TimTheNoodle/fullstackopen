@@ -1,8 +1,3 @@
-  GNU nano 4.9.3                         README.md                          Modified
-
-
-
-
 # Fullstackopen 2020
 Coursework for the full stack development course.\
 

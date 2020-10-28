@@ -1,5 +1,5 @@
 # Fullstackopen 2020
-Coursework for the full stack development course.\
+Coursework for the full stack development course.<br/>
 
 See https://fullstackopen.com/ for details.
 ## Tasks completed

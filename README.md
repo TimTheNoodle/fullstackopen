@@ -8,7 +8,7 @@ See https://fullstackopen.com/ for details.
 |Part0 | 6/6 |
 |Part1 | 14/14 |
 |Part2 | 19/20 |
-|Part3 | TODO |
+|Part3 | 22/22 |
 |Part4 | TODO |
 |Part5 | TODO |
 |Part6 | TODO |

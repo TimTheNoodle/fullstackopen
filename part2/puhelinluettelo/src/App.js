@@ -67,17 +67,25 @@ const App = () => {
         .create(personObject)
         .then(response => {
           setPersons(persons.concat(response.data))
+
+          setNotificationMessage(
+            `Added ${newName}`
+          )
+          setTimeout(() => {
+            setNotificationMessage(null)
+          }, 5000)
+
+          setNewName('')
+          setNewNumber('')
         })
-
-        setNotificationMessage(
-          `Added ${newName}`
-        )
-        setTimeout(() => {
-          setNotificationMessage(null)
-        }, 5000)
-
-        setNewName('')
-        setNewNumber('')
+        .catch(error => {
+          console.log(error.response.data)
+          setErrorMessage(`${error.response.data.error}`)
+          setTimeout(() => {
+            setErrorMessage(null)
+          }, 5000)
+        })
+ 
     }
   }
 
@@ -100,7 +108,7 @@ const App = () => {
   }
 
   const handleNameChange = (event) => {
-    console.log(event.target.value)
+    //console.log(event.target.value)
     setNewName(event.target.value)
   } 
 
